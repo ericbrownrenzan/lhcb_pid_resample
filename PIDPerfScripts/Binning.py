@@ -16,7 +16,7 @@ __all__ = ('CheckBinScheme', 'AddBinScheme', 'SetDefaultBinScheme',
 
 _BinSchemes = {}
 for trackType in GetPartTypes():
-    for varName, varNameInDataSet in DataSetVariables().items():
+    for varName, varNameInDataSet in list(DataSetVariables().items()):
         _BinSchemes.setdefault(trackType, {})
         _BinSchemes[trackType][varName] = {}
 

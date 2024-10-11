@@ -8,7 +8,7 @@
 # granted to it by virtue of its status as an Intergovernmental Organization  #
 # or submit itself to any jurisdiction.                                       #
 ###############################################################################
-from __future__ import print_function
+
 
 import os
 
@@ -28,7 +28,7 @@ def _warningMessage():
     print("! Please make sure you understand why this warning appears.")
     print(80 * '*')
     print("")
-    input("Press ENTER if you wish to continue...")
+    eval(input("Press ENTER if you wish to continue..."))
 
 
 def _defineFileList():

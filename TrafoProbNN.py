@@ -146,7 +146,7 @@ if __name__ == '__main__':
         inputtree = inputfile.Get(inputtreename)
 
 
-    print 'Entries', inputtree.GetEntries()
+    print('Entries', inputtree.GetEntries())
 
     outputfile = options.Output
 
@@ -207,10 +207,10 @@ if __name__ == '__main__':
 
     #Progressbar
     entries = inputtree.GetEntries()
-    print("Processing {0} entries in {2} /{1}".format(entries, inputtreename,
-                                                      options.Input))
+    print(("Processing {0} entries in {2} /{1}".format(entries, inputtreename,
+                                                      options.Input)))
     print("\nThe following variables will be transformed:")
-    print(", ".join(variable_names))
+    print((", ".join(variable_names)))
     print("\n")
 
     #widgets = [os.path.basename(options.Output), progressbar.Percentage(), ' ', progressbar.Bar(), ' ', progressbar.ETA()]
@@ -218,11 +218,11 @@ if __name__ == '__main__':
 
     #pbar.update(0)
     #Iterate through tree
-    for (i, event) in itertools.izip(xrange(entries), inputtree):
+    for (i, event) in zip(range(entries), inputtree):
         inputtree.GetEntry(i)
 
         #iterate through variables
-        for (variable_name, variable_trafo_branch) in itertools.izip(
+        for (variable_name, variable_trafo_branch) in zip(
                 variable_names, variable_trafo_branches):
             if options.Reverse:
                 variable_trafo_branch[0] = UntrafoProbNN(variable_name, event)
@@ -240,19 +240,19 @@ if __name__ == '__main__':
     #            pbar.update(i+1)
 
     if problem_branches:
-        print(
+        print((
             "\n\nWARNING: There were events with ProbNN-values outside the allowed region of [0,1] for {}:".
-            format(options.Input))
-        print("{:<20} {:>15} {:>10}".format('Branch', 'Probl. Events',
-                                            'Percent'))
-        for branch, events in problem_branches.iteritems():
-            print("{:<20} {:>15} {:>10}%".format(
-                branch, events, float(events) / entries * 100.))
+            format(options.Input)))
+        print(("{:<20} {:>15} {:>10}".format('Branch', 'Probl. Events',
+                                            'Percent')))
+        for branch, events in problem_branches.items():
+            print(("{:<20} {:>15} {:>10}%".format(
+                branch, events, float(events) / entries * 100.)))
         print(
             "\t=> Setting these to -1000 (Default value for ProbNN-variables if none was found when creating the ntuple)"
         )
 
-    print("\nFinished processing {0} entries in {2} /{1}\n\t=> Writing to {3}".
-          format(entries, inputtreename, options.Input, options.Output))
+    print(("\nFinished processing {0} entries in {2} /{1}\n\t=> Writing to {3}".
+          format(entries, inputtreename, options.Input, options.Output)))
     outputtree.Write()
     outputfile.Close()

@@ -8,7 +8,7 @@
 # granted to it by virtue of its status as an Intergovernmental Organization  #
 # or submit itself to any jurisdiction.                                       #
 ###############################################################################
-from __future__ import print_function
+
 import ROOT
 import sys
 import warnings
@@ -199,7 +199,7 @@ def GetDataSet(StripVer,
         dsType = 'GenericDataSet'
 
         VariableVector = ROOT.std.vector(ROOT.std.pair("string,string"))()
-        for VarName, DataSetVarName in DataSetVariables().items():
+        for VarName, DataSetVarName in list(DataSetVariables().items()):
             #VariableAlias = ROOT.std.pair("string,string")(VarName, DataSetVarName.format(particle=PartType))
             VariableAlias = ROOT.std.pair("string,string")(
                 VarName, DataSetVarName.dsname.format(particle=PartType))

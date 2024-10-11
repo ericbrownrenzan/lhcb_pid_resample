@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
+
 import argparse
 import numpy as np
 from numpy.random import choice
@@ -25,7 +25,7 @@ class Resampler:
             edges.append(args[-1])
             self.edges = edges
 
-            self.histogram = np.zeros(map(lambda x: len(x) - 1, self.edges))
+            self.histogram = np.zeros([len(x) - 1 for x in self.edges])
 
     def copy(self):
         '''
@@ -232,10 +232,8 @@ def create_resamplers(options):
         if os.path.exists(resampler_location):
             os.remove(resampler_location)
         resamplers = dict()
-        deps = map(lambda x: x.format(sample['branch_particle']),
-                   kin_variables)
-        pids = map(lambda x: x.format(sample['branch_particle']),
-                   pid_variables)
+        deps = [x.format(sample['branch_particle']) for x in kin_variables]
+        pids = [x.format(sample['branch_particle']) for x in pid_variables]
         for pid in pids:
             if 'DLL' in pid:
                 # binning for DLL

@@ -8,7 +8,7 @@
 # granted to it by virtue of its status as an Intergovernmental Organization  #
 # or submit itself to any jurisdiction.                                       #
 ###############################################################################
-from __future__ import print_function
+
 #Added BKK functionality for retrieving Run 2 WGP nTuples
 from DIRAC.Core.Base import Script
 Script.initialize()

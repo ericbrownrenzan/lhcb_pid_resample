@@ -8,8 +8,8 @@
 # granted to it by virtue of its status as an Intergovernmental Organization  #
 # or submit itself to any jurisdiction.                                       #
 ###############################################################################
-from __future__ import print_function
-from __future__ import absolute_import
+
+
 import re
 import math
 
@@ -49,7 +49,7 @@ def DataSetVariables(var=None):
 
 def GetVarNames():
     varArr = [
-        varName for varName, varNameInDataset in DataSetVariables().items()
+        varName for varName, varNameInDataset in list(DataSetVariables().items())
     ]
     varArr.sort()
     return varArr
@@ -269,8 +269,8 @@ def CheckCuts(cuts, strip):
         simple_cuts = simple_cuts.replace(i, " ")
 
     simple_cuts = [x for x in simple_cuts.split(" ") if x != ""]
-    valid_varibles = [x for x, y in DataSetVariables().items()]
-    banned_varibles = [x for x, y in BannedVariables().items()]
+    valid_varibles = [x for x, y in list(DataSetVariables().items())]
+    banned_varibles = [x for x, y in list(BannedVariables().items())]
 
     valid_varibles.sort()
 

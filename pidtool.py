@@ -109,7 +109,7 @@ def grab_data(options):
         for input_file in sample['paths']:
             logging.info('Opening file {}'.format(input_file))
 
-            f = TFile(input_file)
+            f = TFile.Open(input_file)
             ws = f.Get(f.GetListOfKeys().First().GetName())
             ROOT.SetOwnership(ws, False)
             data = ws.allData().front()
